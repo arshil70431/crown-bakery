@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Crown Bakery – Home{% endblock %}
+
+{% block content %}
+<section id="home">
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Crown Bakery</h2>
+            <p>Where traditional Indian flavors meet European baking excellence</p>
+            <a href="{{ url_for('products') }}" class="btn">Explore Our Products</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>Freshly Baked Delights</h2>
+            <p>Our artisan bakers create delicious treats daily using the finest ingredients</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=80" alt="Artisan Bread" class="product-image">
+                </div>
+                <div class="feature-content">
+                    <h3>Artisan Breads</h3>
+                    <p>Handcrafted bread made with traditional methods including our signature sourdough with a 100-year-old starter.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80" alt="Custom Cakes" class="product-image">
+                </div>
+                <div class="feature-content">
+                    <h3>Custom Cakes</h3>
+                    <p>Beautiful custom cakes for all occasions, designed to your specifications using the freshest ingredients.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-img">
+                    <img src="https://c8.alamy.com/comp/F3G0H4/bakery-products-india-asia-F3G0H4.jpg" alt="Bakery Items" class="product-image">
+                </div>
+                <div class="feature-content">
+                    <h3>Bakery Items</h3>
+                    <p>Traditional Indian bakery items made with authentic recipes and premium ingredients.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 40px;">
+            <h2>What Our Customers Say</h2>
+            <p>Don't just take our word for it – hear from our satisfied customers</p>
+        </div>
+
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"The masala pav from Crown Bakery is absolutely amazing! It has the perfect blend of spices and butter. I come here every weekend to get my weekly supply."</p>
+                <div class="customer">
+                    <div style="width:45px;height:45px;border-radius:50%;background:#ffedcc;display:flex;align-items:center;justify-content:center;margin-right:12px;"><i class="fas fa-user" style="color:#d17842;"></i></div>
+                    <div><h4>Priya Sharma</h4><p>Regular Customer</p></div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"I ordered a custom birthday cake for my daughter's party, and it was both beautiful and delicious. Everyone was impressed with the fusion of Indian and Western flavors!"</p>
+                <div class="customer">
+                    <div style="width:45px;height:45px;border-radius:50%;background:#ffedcc;display:flex;align-items:center;justify-content:center;margin-right:12px;"><i class="fas fa-user" style="color:#d17842;"></i></div>
+                    <div><h4>Rohan Kapoor</h4><p>Satisfied Client</p></div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <p>"Their samosa puffs are to die for! I've tried many bakeries, but none compare to the flaky, spicy perfection of Crown Bakery's Indian snacks."</p>
+                <div class="customer">
+                    <div style="width:45px;height:45px;border-radius:50%;background:#ffedcc;display:flex;align-items:center;justify-content:center;margin-right:12px;"><i class="fas fa-user" style="color:#d17842;"></i></div>
+                    <div><h4>Ananya Patel</h4><p>Food Enthusiast</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

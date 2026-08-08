@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crown Bakery – Freshly baked artisan breads, custom cakes, and traditional Indian bakery items in Pune.">
+    <title>{% block title %}Crown Bakery{% endblock %}</title>
+
+    <!-- Google Fonts (Professional UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Razorpay Checkout -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-crown"></i></span>
+                    <h1>Crown Bakery</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
+                        <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">About Us</a></li>
+                        <li><a href="{{ url_for('products') }}" class="nav-link {% if request.endpoint == 'products' %}active{% endif %}">Products</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact Us</a></li>
+                        <li><a href="{{ url_for('login') }}" class="nav-link">Login</a></li>
+                        <li><a href="{{ url_for('register') }}" class="nav-link">Register</a></li>
+                        <li><a href="{{ url_for('checkout') }}" class="nav-link">Checkout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Crown Bakery</h3>
+                    <p>Creating delicious memories since 1995. Our baked goods are made with the finest ingredients and traditional methods.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                        <li><a href="{{ url_for('products') }}">Products</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>Bhosari Alandi Road, Pimpri Chinchwad, Pune, Maharashtra 411039, India</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Email: crownbakery.pune@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Crown Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

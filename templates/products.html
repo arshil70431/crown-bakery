@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Products – Crown Bakery{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="section-title">
+        <h2>Our Products</h2>
+        <p>Delicious baked goods made fresh daily with the finest ingredients</p>
+    </div>
+
+    <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="productSearch" class="search-box" placeholder="Search for products...">
+    </div>
+
+    <div class="products" id="productContainer">
+        {% for product in products %}
+        <div class="product-card" data-category="{{ product.category }}">
+            <div class="product-img">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+            </div>
+            <div class="product-content">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <div class="price">{{ product.price }}</div>
+                <button class="btn add-to-cart" data-product-id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">Add to Cart</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

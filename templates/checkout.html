@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout – Crown Bakery{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="section-title">
+        <h2>Checkout</h2>
+        <p>Complete your order with billing and payment details</p>
+    </div>
+
+    <div class="checkout-container">
+        <div class="form-container">
+            <h3>Billing Address</h3>
+            <form id="billingForm">
+                <div class="form-group"><label for="billing-name">Full Name</label><input type="text" id="billing-name" placeholder="Enter your full name" required></div>
+                <div class="form-group"><label for="billing-email">Email Address</label><input type="email" id="billing-email" placeholder="Enter your email" required></div>
+                <div class="form-group"><label for="billing-phone">Phone Number</label><input type="tel" id="billing-phone" placeholder="Enter your phone number" required></div>
+                <div class="form-group"><label for="billing-address">Street Address</label><input type="text" id="billing-address" placeholder="Enter your street address" required></div>
+                <div class="form-group"><label for="billing-city">City</label><input type="text" id="billing-city" placeholder="Enter your city" required></div>
+                <div class="form-group"><label for="billing-state">State</label><input type="text" id="billing-state" placeholder="Enter your state" required></div>
+                <div class="form-group"><label for="billing-zip">ZIP Code</label><input type="text" id="billing-zip" placeholder="Enter your ZIP code" required></div>
+                <div class="form-group">
+                    <label><input type="checkbox" id="shipping-same"> Shipping address same as billing</label>
+                </div>
+                <div id="shipping-address" class="hidden">
+                    <h4 style="margin-bottom:15px;">Shipping Address</h4>
+                    <div class="form-group"><label for="shipping-address-input">Street Address</label><input type="text" id="shipping-address-input" placeholder="Enter shipping address"></div>
+                    <div class="form-group"><label for="shipping-city">City</label><input type="text" id="shipping-city" placeholder="Enter shipping city"></div>
+                    <div class="form-group"><label for="shipping-state">State</label><input type="text" id="shipping-state" placeholder="Enter shipping state"></div>
+                    <div class="form-group"><label for="shipping-zip">ZIP Code</label><input type="text" id="shipping-zip" placeholder="Enter shipping ZIP code"></div>
+                </div>
+            </form>
+
+            <div class="payment-methods">
+                <h3>Payment Method</h3>
+                <div class="payment-option selected" data-method="card">
+                    <input type="radio" name="payment-method" id="payment-card" value="card" checked>
+                    <i class="fas fa-credit-card payment-icon"></i>
+                    <label for="payment-card">Credit/Debit Card</label>
+                </div>
+                <div class="payment-option" data-method="upi">
+                    <input type="radio" name="payment-method" id="payment-upi" value="upi">
+                    <i class="fas fa-mobile-alt payment-icon"></i>
+                    <label for="payment-upi">UPI Payment</label>
+                </div>
+                <div class="payment-option" data-method="cod">
+                    <input type="radio" name="payment-method" id="payment-cod" value="cod">
+                    <i class="fas fa-money-bill-wave payment-icon"></i>
+                    <label for="payment-cod">Cash on Delivery</label>
+                </div>
+            </div>
+
+            <div class="payment-details" id="card-details">
+                <h4>Card Details</h4>
+                <div class="form-group"><label for="card-number">Card Number</label><input type="text" id="card-number" placeholder="Enter card number"></div>
+                <div class="form-group"><label for="card-name">Name on Card</label><input type="text" id="card-name" placeholder="Enter name on card"></div>
+                <div style="display:grid;grid-template-columns:2fr 1fr;gap:15px;">
+                    <div class="form-group"><label for="card-expiry">Expiry Date</label><input type="text" id="card-expiry" placeholder="MM/YY"></div>
+                    <div class="form-group"><label for="card-cvv">CVV</label><input type="text" id="card-cvv" placeholder="CVV"></div>
+                </div>
+            </div>
+
+            <button type="button" id="place-order" class="btn" style="width:100%;margin-top:20px;">Place Order</button>
+        </div>
+
+        <div class="checkout-summary">
+            <h3>Order Summary</h3>
+            <div id="order-items">
+                {% if cart_items %}
+                    {% for item in cart_items %}
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>{{ item.product.name }}</h4>
+                            <p>Quantity: {{ item.quantity }}</p>
+                        </div>
+                        <div class="cart-item-price">₹{{ item.subtotal }}</div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Your cart is empty.</p>
+                {% endif %}
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="order-total">₹{{ total }}</span>
+            </div>
+            <div class="payment-success hidden" id="payment-success">
+                <i class="fas fa-check-circle"></i>
+                <h2>Payment Successful!</h2>
+                <p>Thank you for your order. Your goodies will be on their way soon.</p>
+                <a href="{{ url_for('home') }}" class="btn" style="margin-top:20px;">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
